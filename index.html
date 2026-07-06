@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WALK ON | 訪問介護事業所</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#10b981', // エメラルドグリーン
+                        primaryDark: '#059669',
+                        darkBg: '#111827',
+                        darkCard: '#1f2937'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-900 dark:bg-darkBg dark:text-gray-100 transition-colors duration-300 font-sans">
+
+    <!-- Header / Navigation -->
+    <header class="fixed w-full top-0 z-50 bg-white/90 dark:bg-darkBg/90 backdrop-blur-sm shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="#" class="text-2xl font-bold tracking-wider">WALK <span class="text-primary">ON</span></a>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <!-- Dark Mode Toggle -->
+                    <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+                        <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+                        <svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+                    </button>
+                    <!-- Mobile menu button -->
+                    <div class="md:hidden">
+                        <button id="mobile-menu-button" class="p-2 text-gray-500 hover:text-gray-900 dark:hover:text-white">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu (Hidden by default) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-darkBg border-t border-gray-200 dark:border-gray-800">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#about" class="block px-3 py-2 text-base font-medium hover:text-primary">About</a>
+                <a href="#skills" class="block px-3 py-2 text-base font-medium hover:text-primary">Skills</a>
+                <a href="#contact" class="block px-3 py-2 text-base font-medium hover:text-primary">Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="relative h-screen flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <!-- 爽やかな青空と道の風景 -->
+            <img src="https://images.unsplash.com/photo-1494548162494-384bba4ab999?q=80&w=2000&auto=format&fit=crop" alt="青空と道" class="w-full h-full object-cover" />
+            <div class="absolute inset-0 bg-black/40"></div>
+        </div>
+        
+        <div class="relative z-10 text-center px-4 w-full">
+            <div class="inline-block px-4 py-1.5 rounded-full border border-primary/50 bg-black/30 backdrop-blur-md text-primary text-sm font-medium tracking-wider mb-6 fade-in">
+                障害のある方を対象とした訪問介護事業所
+            </div>
+            <h1 class="text-4xl md:text-5xl lg:text-7xl font-bold text-white mb-6 tracking-tight fade-in whitespace-nowrap" style="transition-delay: 200ms;">
+                ひとりひとりの <span class="text-primary drop-shadow-md">個性を大切に！</span>
+            </h1>
+            <p class="text-lg md:text-2xl text-gray-200 font-medium mb-12 fade-in" style="transition-delay: 400ms;">
+                ご利用者、ご家族と共に<br class="md:hidden" />伴走していきます。
+            </p>
+            <div class="fade-in" style="transition-delay: 600ms;">
+                <a href="#about" class="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-gray-900 bg-white rounded-md hover:bg-gray-100 transition-colors duration-300">
+                    私たちについて
+                    <svg class="w-5 h-5 ml-2 -mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 bg-gray-50 dark:bg-darkCard transition-colors duration-300">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 tracking-wider">Who I Am</h2>
+                <div class="w-16 h-1 bg-primary mx-auto"></div>
+            </div>
+
+            <div class="bg-white dark:bg-darkBg rounded-2xl shadow-xl overflow-hidden fade-in">
+                <div class="p-8 md:p-12">
+                    
+                    <!-- ロゴ表示エリア -->
+                    <div class="flex flex-col sm:flex-row justify-center items-center gap-12 mb-12">
+                        <div class="text-center">
+                            <p class="text-sm text-gray-500 dark:text-gray-400 mb-4 font-bold tracking-widest">事業所</p>
+                            <div class="w-40 h-40 rounded-full border border-gray-100 dark:border-gray-800 shadow-sm flex items-center justify-center bg-white p-4">
+                                <img src="D8BE0AE4-62E3-41DE-BE33-B5844E8B5A6A.PNG" alt="WALK ON ロゴ" class="w-full h-full object-contain">
+                            </div>
+                        </div>
+                        
+                        <!-- 区切り線 -->
+                        <div class="hidden sm:block w-px h-24 bg-gray-200 dark:bg-gray-700"></div>
+                        
+                        <div class="text-center">
+                            <p class="text-sm text-gray-500 dark:text-gray-400 mb-4 font-bold tracking-widest">運営会社</p>
+                            <div class="w-40 h-40 rounded-full border border-gray-100 dark:border-gray-800 shadow-sm flex items-center justify-center bg-white p-4">
+                                <img src="dpt.jpg" alt="株式会社Departure ロゴ" class="w-full h-full object-contain">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                        <!-- 会社概要 -->
+                        <div>
+                            <h3 class="text-2xl font-bold mb-6 border-b border-gray-200 dark:border-gray-700 pb-2">概要</h3>
+                            <ul class="space-y-4 text-sm md:text-base">
+                                <li class="flex flex-col"><span class="text-gray-500 dark:text-gray-400 text-xs mb-1">事業所名</span><span class="font-bold">WALK ON</span></li>
+                                <li class="flex flex-col"><span class="text-gray-500 dark:text-gray-400 text-xs mb-1">運営会社</span><span class="font-bold">株式会社Departure</span></li>
+                                <li class="flex flex-col"><span class="text-gray-500 dark:text-gray-400 text-xs mb-1">代表取締役</span><span class="font-bold">武藤 淳</span></li>
+                                <li class="flex flex-col"><span class="text-gray-500 dark:text-gray-400 text-xs mb-1">設立年月日</span><span class="font-bold">2026年8月1日</span></li>
+                                <li class="flex flex-col"><span class="text-gray-500 dark:text-gray-400 text-xs mb-1">所在地</span><span>〒106-0032<br>東京都港区六本木3-4-2<br>コープ野村六本木1-203</span></li>
+                                <li class="flex flex-col mt-4">
+                                    <span class="font-bold bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded text-sm mb-2 inline-block w-max">許可番号</span>
+                                    <span>（訪問介護）事業所番号: 未定</span>
+                                    <span>（障害居宅介護）事業所番号: 未定</span>
+                                </li>
+                                <!-- ▼ ご指定の箇所（サービス提供地域の後にスペースを追加） ▼ -->
+                                <li class="flex flex-col pt-4 border-t border-gray-100 dark:border-gray-800">
+                                    <span class="text-gray-500 dark:text-gray-400 text-xs mb-1 font-bold">サービス提供地域</span>
+                                    <span class="leading-relaxed">&nbsp;&nbsp;中野区・墨田区・渋谷区・杉並区・新宿区・江戸川区・港区</span>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <!-- ご挨拶 -->
+                        <div>
+                            <h3 class="text-2xl font-bold mb-6 border-b border-gray-200 dark:border-gray-700 pb-2">ご挨拶</h3>
+                            <div class="space-y-4 text-gray-700 dark:text-gray-300 text-sm md:text-base leading-relaxed">
+                                <p>初めまして、株式会社Departure代表取締役を務める武藤 淳と申します。</p>
+                                <p>この度、障害のある方を対象とした訪問介護事業所 <strong>WALK ON</strong> を開設いたしました。</p>
+                                <p>私たちは、知的障がいや精神障がいのある方お一人おひとりの「その人らしさ」を大切にし、ご利用者様の気持ちに寄り添いながら、安心して地域で生活できるよう支援いたします。</p>
+                                <p>日々の生活の中で「できること」を大切にし「やってみたい」という気持ちを応援しながら、ご本人のペースに合わせた支援を心がけています。<br>またご家族の皆様にも安心していただけるよう、丁寧なコミュニケーションと信頼関係を大切にしてまいります。</p>
+                                <p>私たちはご利用者様やご家族にとって「相談しやすい存在」「頼れるパートナー」でありたいと考えています。<br>どんな小さなお困りごとでも、お気軽にご相談ください。</p>
+                                <p class="font-bold mt-6">皆様との出会いを心より楽しみにしております。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-24 bg-white dark:bg-darkBg transition-colors duration-300">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 tracking-wider">事業内容</h2>
+                <div class="w-16 h-1 bg-primary mx-auto"></div>
+                <p class="mt-4 text-gray-500 dark:text-gray-400">私たちが提供するサポート内容</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Skill 1 -->
+                <div class="bg-gray-50 dark:bg-darkCard p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow border-t-4 border-primary fade-in">
+                    <h3 class="text-xl font-bold mb-3 text-center">障害居宅介護</h3>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm text-center">ご自宅での入浴、排せつ、食事の介護や、調理、洗濯、掃除などの生活全般にわたる援助を行います。</p>
+                </div>
+                <!-- Skill 2 -->
+                <div class="bg-gray-50 dark:bg-darkCard p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow border-t-4 border-primary fade-in" style="transition-delay: 100ms;">
+                    <h3 class="text-xl font-bold mb-3 text-center">行動援護</h3>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm text-center">行動に著しい困難を有する方へ、外出時の危険を回避するための援護や移動中の介護を行います。</p>
+                </div>
+                <!-- Skill 3 -->
+                <div class="bg-gray-50 dark:bg-darkCard p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow border-t-4 border-primary fade-in" style="transition-delay: 200ms;">
+                    <h3 class="text-xl font-bold mb-3 text-center">移動支援</h3>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm text-center">社会生活上不可欠な外出や、余暇活動等の社会参加のための外出の際の移動のサポートを行います。</p>
+                </div>
+                <!-- Skill 4 -->
+                <div class="bg-gray-50 dark:bg-darkCard p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow border-t-4 border-primary fade-in lg:col-start-1 lg:ml-auto w-full max-w-sm" style="transition-delay: 300ms;">
+                    <h3 class="text-xl font-bold mb-3 text-center">重度訪問介護</h3>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm text-center">重度の肢体不自由や知的・精神障害があり、常に介護を必要とする方へ、総合的な支援を行います。</p>
+                </div>
+                <!-- Skill 5 -->
+                <div class="bg-gray-50 dark:bg-darkCard p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow border-t-4 border-primary fade-in lg:col-start-2 lg:mr-auto w-full max-w-sm" style="transition-delay: 400ms;">
+                    <h3 class="text-xl font-bold mb-3 text-center">同行援護</h3>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm text-center">視覚障害により移動に著しい困難を有する方へ、外出時に同行し、必要な情報の提供や援護を行います。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 bg-gray-50 dark:bg-darkCard transition-colors duration-300">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 tracking-wider">Get In Touch</h2>
+                <div class="w-16 h-1 bg-primary mx-auto"></div>
+                <p class="mt-6 text-gray-600 dark:text-gray-400">ご依頼、ご相談はお気軽にどうぞ。<br>追ってご連絡致します。</p>
+            </div>
+
+            <!-- メール送信用に Formspree 等のURLを action に設定してください -->
+            <form action="#" method="POST" class="space-y-6 fade-in bg-white dark:bg-darkBg p-8 rounded-xl shadow-sm">
+                <div>
+                    <label for="name" class="block text-sm font-medium mb-2">お名前</label>
+                    <input type="text" id="name" name="name" required class="w-full px-4 py-3 rounded-md border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors">
+                </div>
+                <div>
+                    <label for="contact-info" class="block text-sm font-medium mb-2">ご連絡先 (メールアドレス または 電話番号)</label>
+                    <input type="text" id="contact-info" name="contact-info" required class="w-full px-4 py-3 rounded-md border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors">
+                </div>
+                <div>
+                    <label for="message" class="block text-sm font-medium mb-2">お問い合わせ内容</label>
+                    <textarea id="message" name="message" rows="5" required class="w-full px-4 py-3 rounded-md border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors"></textarea>
+                </div>
+                <div class="pt-4 text-center">
+                    <button type="submit" class="inline-flex justify-center items-center px-8 py-4 border border-transparent text-base font-bold rounded-md text-white bg-primary hover:bg-primaryDark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-colors w-full sm:w-auto min-w-[200px]">
+                        送信する
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white dark:bg-darkBg py-8 border-t border-gray-200 dark:border-gray-800 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
+            <div class="mb-4 md:mb-0">
+                <span class="text-xl font-bold tracking-wider">WALK <span class="text-primary">ON</span></span>
+            </div>
+            <p class="text-sm text-gray-500 dark:text-gray-400">
+                &copy; 2026 株式会社Departure All rights reserved.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Dark Mode Setup
+        const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+        const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+        const themeToggleBtn = document.getElementById('theme-toggle');
+
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+            themeToggleLightIcon.classList.remove('hidden');
+        } else {
+            document.documentElement.classList.remove('dark');
+            themeToggleDarkIcon.classList.remove('hidden');
+        }
+
+        themeToggleBtn.addEventListener('click', function() {
+            themeToggleDarkIcon.classList.toggle('hidden');
+            themeToggleLightIcon.classList.toggle('hidden');
+
+            if (localStorage.getItem('color-theme')) {
+                if (localStorage.getItem('color-theme') === 'light') {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('color-theme', 'dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('color-theme', 'light');
+                }
+            } else {
+                if (document.documentElement.classList.contains('dark')) {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('color-theme', 'light');
+                } else {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('color-theme', 'dark');
+                }
+            }
+        });
+
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu on link click
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Scroll Animation (Intersection Observer)
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.15
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(element => {
+            observer.observe(element);
+        });
+    </script>
+</body>
+</html>
